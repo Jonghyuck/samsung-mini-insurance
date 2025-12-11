@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성생명 미니보험 - 간편하게 가입하세요</title>
+    <style>
+        :root {
+            --color-primary: #1E5B7D;
+            --color-primary-light: #2E7A9E;
+            --color-primary-dark: #0D3A50;
+            --color-accent: #FF6B35;
+            --color-accent-light: #FF8C61;
+            --color-success: #2ECC71;
+            --color-gray-50: #F8F9FA;
+            --color-gray-100: #E9ECEF;
+            --color-gray-200: #DEE2E6;
+            --color-gray-700: #495057;
+            --color-gray-900: #212529;
+            --color-white: #FFFFFF;
+            --color-text: #333333;
+            --color-text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-gray-50);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-white);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-primary);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products {
+            padding: 80px 20px;
+            background-color: var(--color-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-text-light);
+            margin-bottom: 50px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-primary);
+        }
+
+        .product-header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-header h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .product-body {
+            padding: 25px;
+        }
+
+        .product-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .product-feature:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-gray-50);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 3px;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: var(--color-text-light);
+        }
+
+        .product-price {
+            background-color: var(--color-gray-50);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 12px;
+            color: var(--color-text-light);
+            margin-bottom: 5px;
+        }
+
+        .price-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .product-footer {
+            padding-top: 20px;
+            border-top: 1px solid var(--color-gray-100);
+        }
+
+        .btn-signup {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .btn-signup:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .benefits {
+            background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+            padding: 80px 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .benefit-item p {
+            color: var(--color-text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .faq {
+            padding: 80px 20px;
+            background-color: var(--color-white);
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--color-gray-200);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: var(--color-gray-50);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: var(--color-primary);
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: var(--color-gray-100);
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background-color: var(--color-white);
+            display: none;
+            color: var(--color-text-light);
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        footer {
+            background-color: var(--color-gray-900);
+            color: var(--color-white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: var(--color-accent);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--color-gray-100);
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--color-gray-700);
+            padding-top: 20px;
+            font-size: 12px;
+            color: var(--color-gray-100);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo">삼성생명 미니보험</div>
+            <ul>
+                <li><a href="#products">상품</a></li>
+                <li><a href="#benefits">혜택</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>간편하게 가입하고 확실하게 보장받으세요</h1>
+        <p class="subtitle">알짜지식만 쏙쏙 • 깔끔하게 가입하는 센스있는 미니보험</p>
+        <p class="tagline">나에게 맞는 보험을 선택하세요</p>
+        <button class="btn" onclick="scrollToProducts()">지금 가입하기</button>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">나에게 맞는 상품을 선택하세요</h2>
+            <p class="section-subtitle">언제 어디서나 스마트폰으로 간편하게 가입 가능합니다.</p>
+
+            <div class="products-grid">
+                <!-- S교통상해보험 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>S교통상해보험</h3>
+                        <span class="product-badge">인기상품</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-feature">
+                            <div class="feature-icon">🚗</div>
+                            <div class="feature-text">
+                                <div class="feature-title">교통사고 보장</div>
+                                <div class="feature-desc">운전 중 발생한 사고 완벽 보장</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">💰</div>
+                            <div class="feature-text">
+                                <div class="feature-title">합리적 보험료</div>
+                                <div class="feature-desc">월 800원 / 610원대</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-text">
+                                <div class="feature-title">빠른 가입</div>
+                                <div class="feature-desc">5분 이내 가입 완료!</div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-label">월 보험료</div>
+                            <div class="price-value">1,830원</div>
+                        </div>
+                        <div class="product-footer">
+                            <a href="https://direct.samsunglife.com/pAccident.eds?pagelndjhminifcpa332000ciddirectorgfcpa332000pAccidentimg00bigeventmainfcfcid0002184403" target="_blank" class="btn-signup">가입하기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 스마트보장 1종 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>스마트보장 1종</h3>
+                        <span class="product-badge">추천상품</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-feature">
+                            <div class="feature-icon">🏥</div>
+                            <div class="feature-text">
+                                <div class="feature-title">실손의료비</div>
+                                <div class="feature-desc">125만원 한도</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">🦷</div>
+                            <div class="feature-text">
+                                <div class="feature-title">치아보장</div>
+                                <div class="feature-desc">2,3등급 치료비</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">💳</div>
+                            <div class="feature-text">
+                                <div class="feature-title">합리적 가격</div>
+                                <div class="feature-desc">2,000원대</div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-label">월 보험료</div>
+                            <div class="price-value">2,055원</div>
+                        </div>
+                        <div class="product-footer">
+                            <a href="https://direct.samsunglife.com/pSmart.eds?pagelndjhminifcmise500ciddirectorgfcmise500pSmartimg00bigeventmainbtnfcid0002184403" target="_blank" class="btn-signup">가입하기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 스마트보장 2종 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>스마트보장 2종</h3>
+                        <span class="product-badge">추천상품</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-feature">
+                            <div class="feature-icon">🏢</div>
+                            <div class="feature-text">
+                                <div class="feature-title">골절·탈구</div>
+                                <div class="feature-desc">1,2등급 120만 보장</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">🤕</div>
+                            <div class="feature-text">
+                                <div class="feature-title">상해진단비</div>
+                                <div class="feature-desc">최대 10만원</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">⭐</div>
+                            <div class="feature-text">
+                                <div class="feature-title">폭넓은 보장</div>
+                                <div class="feature-desc">160~600원대</div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-label">월 보험료</div>
+                            <div class="price-value">2,055원</div>
+                        </div>
+                        <div class="product-footer">
+                            <a href="https://direct.samsunglife.com/pSmart.eds?pagelndjhminimonimopSmart2fcid0002184403" target="_blank" class="btn-signup">가입하기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 슬기로운 취미생활 상해보험 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>슬기로운 취미생활 상해보험</h3>
+                        <span class="product-badge">신상품</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-feature">
+                            <div class="feature-icon">🎾</div>
+                            <div class="feature-text">
+                                <div class="feature-title">생활 스포츠</div>
+                                <div class="feature-desc">5대 생활 스포츠 보장</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">🏃</div>
+                            <div class="feature-text">
+                                <div class="feature-title">활동적인 생활</div>
+                                <div class="feature-desc">야외활동 중 상해 보장, 까지 높은 보장</div>
+                            </div>
+                        </div>
+                        <div class="product-feature">
+                            <div class="feature-icon">💸</div>
+                            <div class="feature-text">
+                                <div class="feature-title">저렴한 가격</div>
+                                <div class="feature-desc">2,500~2,600원</div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-label">월 보험료</div>
+                            <div class="price-value">2,064원</div>
+                        </div>
+                        <div class="product-footer">
+                            <a href="https://direct.samsunglife.com/pSports.eds?pagelndjhminifcsports1fcid0002184403" target="_blank" class="btn-signup">가입하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">미니보험의 6가지 장점</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>5분 이내 가입 완료!</h3>
+                    <p>복잡한 서류 작성 없이 스마트폰으로 간편하게 가입합니다.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3>저렴한 보험료</h3>
+                    <p>커피 한 잔 정도의 저렴한 보험료로 충실한 보장을 받으세요.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>확실한 보장</h3>
+                    <p>삼성생명의 신뢰성 있는 보장으로 언제나 안심합니다.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔄</div>
+                    <h3>언제든 청약철회</h3>
+                    <p>마음에 들지 않으면 청약철회 후 재가입할 수 있습니다.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <h3>언제 어디서나</h3>
+                    <p>스마트폰으로 언제 어디서나 간편하게 가입 가능합니다.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <h3>선택의 자유</h3>
+                    <p>다양한 상품 중 나에게 딱 맞는 것을 선택하세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>삼성생명 미니보험이란 무엇인가요?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>삼성생명의 미니보험은 보험료는 저렴하지만 필수 보장을 챙긴 소액 단기 상품입니다. 기존 보험의 빈틈을 채우기에 좋습니다.</p>
+                        <p style="margin-top: 10px;">- S교통상해보험: 월 610~800원<br>- 스마트보장 1종: 월 2,055원<br>- 스마트보장 2종: 월 2,055원<br>- 슬기로운 취미생활상해보험: 월 2,064원</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>가입연령 제한이 있나요?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>상품별로 다르지만 보통 만 19세~64세입니다.</p>
+                        <p style="margin-top: 10px;">- S교통상해보험: 만 19~64세<br>- 스마트보장보험: 만 20~55세<br>- 슬기로운취미생활상해보험: 만 20~64세</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>건강진단은 필요한가요?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>대부분의 경우 간단한 건강진단만으로 가입이 가능합니다.</p>
+                        <p style="margin-top: 10px;">신계약 및 직전 2년내 가입한 계약의 건강진단보험금을 합산하여 연령별 무진단 한도를 초과할 경우 건강진단을 실시합니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>가입 후 보장은 언제부터 시작되나요?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>보험료가 정상 인출되면 당일 또는 익일부터 보장이 시작됩니다.</p>
+                        <p style="margin-top: 10px;">다만, 보험료 출금 시간에 따라 은행 전산 점검 시간에 겹칠 수 있으므로 가급적 낮은 시간대에 진행하시기 바랍니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>URL에 FC 코드를 넣어야 하는 이유는?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>네, 매우 중요합니다! URL 가장 마지막 부분(=)에 반드시 FC사번을 넣어서 가입해야 모집 및 수금 담당 컨설턴트가 정상적으로 반영됩니다.</p>
+                        <p style="margin-top: 10px;">코드가 누락되거나 잘못 입력된 경우, 다이렉트 채널로 반영되오니 주의해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>가입 후 재가입이 가능한가요?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>네, 가능합니다. 마음에 들지 않으면 청약철회 후 재가입할 수 있습니다.</p>
+                        <p style="margin-top: 10px;">다만, 특정 시간대(23:30~00:30)에 가입한 경우 보험료 출금이 되지 않을 수 있으니 가급적 이 시간을 피해서 진행해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>더 자세한 상담이 필요하신가요?</h2>
+            <p>삼성생명 다이렉트 콜센터에 문의하세요</p>
+            <button class="btn btn-secondary" onclick="scrollToProducts()">지금 가입하기</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>상품</h4>
+                <a href="#products">S교통상해보험</a>
+                <a href="#products">스마트보장 1종</a>
+                <a href="#products">스마트보장 2종</a>
+                <a href="#products">슬기로운취미생활상해보험</a>
+            </div>
+            <div class="footer-section">
+                <h4>고객센터</h4>
+                <p>☎️ 080-789-3300</p>
+                <p>운영시간: 평일 9:00 ~ 18:00</p>
+                <p>(점심시간 12:00~13:00 제외)</p>
+            </div>
+            <div class="footer-section">
+                <h4>회사정보</h4>
+                <p>삼성생명보험주식회사</p>
+                <p>사업자등록번호: 104-81-17088</p>
+            </div>
+            <div class="footer-section">
+                <h4>바로가기</h4>
+                <a href="https://www.samsunglife.com">삼성생명 홈페이지</a>
+                <a href="https://direct.samsunglife.com">삼성생명 다이렉트</a>
+                <a href="https://www.kiri.or.kr">보험개발원</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright 2024 Samsung Life Insurance Co., Ltd. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 11px; opacity: 0.8;">본 페이지는 삼성생명 미니보험 상품 안내용이며, 가입 시 정확한 약관을 확인하시기 바랍니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleFaq(element) {
+            const question = element;
+            const answer = question.nextElementSibling;
+            const toggle = question.querySelector('.faq-toggle');
+
+            // Close all other answers
+            document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                if (activeAnswer !== answer) {
+                    activeAnswer.classList.remove('active');
+                    activeAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                }
+            });
+
+            // Toggle current answer
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const element = document.querySelector(href);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
